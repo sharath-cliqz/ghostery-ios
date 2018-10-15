@@ -28,5 +28,8 @@ steps:
     actions: 'clean build test'
     scheme: 'Fennec'
     sdk: 'iphonesimulator'
-    xcWorkspacePath: '**/*Client.xcworkspace'
-    xcodeVersion: 9 # Options: 8, 9, default, specifyPath
+    xcWorkspacePath: 'Client.xcworkspace'
+    destinationTypeOption: 'simulators'
+    destinationSimulators: 'iPhone 7,OS=11.1'
+    args: 'OTHER_SWIFT_FLAGS="$(value) -DAUTOMATION" ONLY_ACTIVE_ARCH=NO -derivedDataPath'
+    xcodeVersion: 'Xcode 9.3.1'
