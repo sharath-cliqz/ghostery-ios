@@ -8,6 +8,9 @@ pool:
 
 steps:
 
+- script: xcode-select -switch /Applications/Xcode_9.3.1.app
+  displayName: 'set default xcode to 9.3.1'
+
 - script: xcodebuild -version
   displayName: 'xcode version'
 
@@ -32,4 +35,4 @@ steps:
     destinationTypeOption: 'simulators'
     destinationSimulators: 'iPhone 7,OS=11.1'
     args: 'OTHER_SWIFT_FLAGS="$(value) -DAUTOMATION" ONLY_ACTIVE_ARCH=NO -derivedDataPath'
-    xcodeVersion: 'Xcode 9.3.1'
+    xcodeVersion: 'default'
