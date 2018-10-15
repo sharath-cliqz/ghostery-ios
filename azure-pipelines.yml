@@ -8,7 +8,7 @@ pool:
 
 steps:
 
-- script: xcode-select -switch /Applications/Xcode_9.3.1.app
+- script: sudo xcode-select --switch /Applications/Xcode_9.3.1.app
   displayName: 'set default xcode to 9.3.1'
 
 - script: xcodebuild -version
