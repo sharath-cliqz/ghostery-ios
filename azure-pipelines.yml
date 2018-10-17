@@ -20,7 +20,7 @@ steps:
 - script: $(which npm) install
   displayName: 'npm install'
 
-- task: CocoaPods@0
+- script: $(which pod) install
   displayName: 'pod install'
 
 - script: $(which npm) run bundle
