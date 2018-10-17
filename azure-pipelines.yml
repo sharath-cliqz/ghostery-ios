@@ -26,12 +26,5 @@ steps:
 - script: $(which npm) run bundle
   displayName: 'npm run bundle'
 
-- task: Xcode@5
-  inputs:
-    actions: 'clean build test'
-    scheme: 'Fennec'
-    sdk: 'iphoneos'
-    xcWorkspacePath: 'Client.xcworkspace'
-    args: 'OTHER_SWIFT_FLAGS="$(value) -DAUTOMATION" ONLY_ACTIVE_ARCH=NO -derivedDataPath'
-    xcodeVersion: 'default'
-    packageApp: true
+- script: xcodebuild -workspace Client.xcworkspace -scheme "Fennec" -sdk iphonesimulator -destination "platform=iOS Simulator,OS=11.3,id=C58C3982-8DDD-4030-9276-C5F30352FCF1" ONLY_ACTIVE_ARCH=NO -derivedDataPath clean build test
+  displayName: 'Xcode Build'
