@@ -17,21 +17,21 @@ steps:
 - script: $(which carthage) bootstrap --verbose --platform ios --color auto --cache-builds
   displayName: 'carthage bootstrap'
 
-- task: Npm@0
+- task: Npm@1
   displayName: 'npm install'
   inputs:
     command: 'install'
 
-- task: CocoaPods@1
+- task: CocoaPods@0
   displayName: 'pod install'
 
-- task: Npm@2
+- task: Npm@1
   displayName: 'npm run bundle'
   inputs:
     command: 'custom'
     customCommand: 'run bundle'
 
-- task: Xcode@3
+- task: Xcode@5
   displayName: 'XCode Build'
   inputs:
     actions: 'clean build test'
