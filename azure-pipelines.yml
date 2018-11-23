@@ -53,8 +53,8 @@ steps:
   displayName: 'Setup and Run Tests'
 
 - task: PublishTestResults@2
-    condition: always()
-    displayName: 'Publish JUnit Test'
-    inputs:
-      testResultsFormat: 'JUnit'
-      testResultsFiles: 'cliqz-mobile-tests/test-reports/*.xml'
+  condition: always()
+  displayName: 'Publish JUnit Test'
+  inputs:
+    testResultsFormat: 'JUnit'
+    testResultsFiles: 'cliqz-mobile-tests/test-reports/*.xml'
