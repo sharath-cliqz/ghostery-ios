@@ -50,7 +50,7 @@ steps:
       source scripts/azure-scripts/appium.sh
       python testRunner.py || true
       source scripts/azure-scripts/cleanup.sh ios
-    displayName: 'Setup and Run Tests'
+  displayName: 'Setup and Run Tests'
 
 - task: PublishTestResults@2
     condition: always()
