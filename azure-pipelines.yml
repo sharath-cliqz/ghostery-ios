@@ -14,7 +14,7 @@ steps:
 - bash: |
       xcrun simctl create Test-iPhone6s com.apple.CoreSimulator.SimDeviceType.iPhone-6s com.apple.CoreSimulator.SimRuntime.iOS-11-4 > cliqz-mobile-tests/dev.id
       xcrun simctl boot $(cat cliqz-mobile-tests/dev.id)
-	    sleep 10
+      sleep 10
   displayName: 'Create a Test Simulator'
 
 - script: sudo xcode-select --switch /Applications/Xcode_9.3.1.app
