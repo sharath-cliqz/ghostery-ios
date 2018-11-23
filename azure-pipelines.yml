@@ -20,7 +20,7 @@ steps:
 
 - bash: |
       cat cliqz-mobile-tests/dev.id
-      export DEV_UDID=$(cat dev.id)
+      export DEV_UDID=$(cat cliqz-mobile-tests/dev.id)
       echo "UDID=${DEV_UDID}"
   displayName: 'Test ID'
 
