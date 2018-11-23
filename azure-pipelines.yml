@@ -18,12 +18,6 @@ steps:
 - script: sudo xcode-select --switch /Applications/Xcode_9.3.1.app
   displayName: 'set default xcode to 9.3.1'
 
-- bash: |
-      cat cliqz-mobile-tests/dev.id
-      export DEV_UDID=$(cat cliqz-mobile-tests/dev.id)
-      echo "UDID=${DEV_UDID}"
-  displayName: 'Test ID'
-
 - script: $(which carthage) bootstrap --verbose --platform ios --color auto --cache-builds
   displayName: 'carthage bootstrap'
 
