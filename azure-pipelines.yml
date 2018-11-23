@@ -8,11 +8,13 @@ pool:
 
 steps:
 
-- script: git clone https://github.com/cliqz-oss/cliqz-mobile-tests.git
+- script: git clone https://github.com/cliqz-oss/cliqz-mobile-tests.git --branch master --single-branch
   displayName: Clone Tests
 
 - bash: |
       xcrun simctl create Test-iPhone6s com.apple.CoreSimulator.SimDeviceType.iPhone-6s com.apple.CoreSimulator.SimRuntime.iOS-11-4 > cliqz-mobile-tests/dev.id
+      xcrun simctl boot $(cat cliqz-mobile-tests/dev.id)
+	    sleep 10
   displayName: 'Create a Test Simulator'
 
 - script: sudo xcode-select --switch /Applications/Xcode_9.3.1.app
@@ -35,7 +37,7 @@ steps:
     command: 'custom'
     customCommand: 'run bundle'
 
-- script: xcodebuild -workspace Client.xcworkspace -scheme "Fennec" -sdk iphonesimulator -destination "platform=iOS Simulator,OS=11.3,name=Test-iPhone6s" OTHER_SWIFT_FLAGS='$(value) -DAUTOMATION' ONLY_ACTIVE_ARCH=NO -derivedDataPath clean build test
+- script: xcodebuild -workspace Client.xcworkspace -scheme "Fennec" -sdk iphonesimulator -destination "platform=iOS Simulator,OS=11.4,name=Test-iPhone6s" OTHER_SWIFT_FLAGS='$(value) -DAUTOMATION' ONLY_ACTIVE_ARCH=NO -derivedDataPath clean build test
   displayName: 'Xcode Build on Test iPhone 6s Simulator'
 
 - bash: |
