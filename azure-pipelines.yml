@@ -44,6 +44,8 @@ steps:
       cd cliqz-mobile-tests
       export DEV_NAME="Test-iPhone6s"
       export DEV_UDID=$(cat dev.id)
+      xcrun simctl boot $(cat dev.id)
+      sleep 10
       source scripts/azure-scripts/setup.sh ios
       source scripts/azure-scripts/envs.sh ios
       source scripts/azure-scripts/appium.sh
