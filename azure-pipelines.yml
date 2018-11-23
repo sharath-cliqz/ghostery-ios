@@ -13,7 +13,7 @@ steps:
 
 - bash: |
       export DEV_NAME="Test-iPhone6s"
-	    export DEV_UDID=$(xcrun simctl create ${DEV_NAME} com.apple.CoreSimulator.SimDeviceType.iPhone-6s com.apple.CoreSimulator.SimRuntime.iOS-11-4)
+      export DEV_UDID=$(xcrun simctl create ${DEV_NAME} com.apple.CoreSimulator.SimDeviceType.iPhone-6s com.apple.CoreSimulator.SimRuntime.iOS-11-4)
   displayName: 'Create a Test Simulator'
 
 - script: sudo xcode-select --switch /Applications/Xcode_9.3.1.app
