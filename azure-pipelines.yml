@@ -12,16 +12,17 @@ steps:
   displayName: Clone Tests
 
 - bash: |
-      export DEV_NAME="Test-iPhone6s"
-      export DEV_UDID=$(xcrun simctl create ${DEV_NAME} com.apple.CoreSimulator.SimDeviceType.iPhone-6s com.apple.CoreSimulator.SimRuntime.iOS-11-4)
+      xcrun simctl create Test-iPhone6s com.apple.CoreSimulator.SimDeviceType.iPhone-6s com.apple.CoreSimulator.SimRuntime.iOS-11-4 > cliqz-mobile-tests/dev.id
   displayName: 'Create a Test Simulator'
 
 - script: sudo xcode-select --switch /Applications/Xcode_9.3.1.app
   displayName: 'set default xcode to 9.3.1'
 
 - bash: |
-      echo "${DEV_NAME} : ${DEV_UDID}"
-  displayName: 'Test ENVS'
+      cat cliqz-mobile-tests/dev.id
+      export DEV_UDID=$(cat dev.id)
+      echo "UDID=${DEV_UDID}"
+  displayName: 'Test ID'
 
 - script: $(which carthage) bootstrap --verbose --platform ios --color auto --cache-builds
   displayName: 'carthage bootstrap'
@@ -45,6 +46,8 @@ steps:
 
 - bash: |
       cd cliqz-mobile-tests
+      export DEV_NAME="Test-iPhone6s"
+      export DEV_UDID=$(cat dev.id)
       source scripts/azure-scripts/setup.sh ios
       source scripts/azure-scripts/envs.sh ios
       source scripts/azure-scripts/appium.sh
