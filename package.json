@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "Cliqz for iOS",
   "scripts": {
-    "appium": "appium &",
     "build": "webpack --config webpack.config.js",
     "debug-channel": "sed -i '' 's/\"channel\": \".*\",$/\"channel\": \"MI99\",/' node_modules/browser-core/build/modules/core/config.js",
     "dev-server": "node node_modules/react-native/local-cli/cli.js start",
@@ -39,8 +38,7 @@
     "readability": "mozilla/readability#3c76104adb00eb9897517e6be6c74c6c05918dfe",
     "stream-browserify": "2.0.1",
     "stream-http": "2.7.2",
-    "url": "^0.11.0",
-    "wd": "1.6.2"
+    "url": "^0.11.0"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
