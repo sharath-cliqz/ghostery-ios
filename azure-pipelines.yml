@@ -12,6 +12,7 @@ steps:
   displayName: Clone Tests
 
 - bash: |
+      sudo xcode-select --switch /Applications/Xcode_9.4.1.app
       xcrun simctl create Test-iPhone6s com.apple.CoreSimulator.SimDeviceType.iPhone-6s com.apple.CoreSimulator.SimRuntime.iOS-11-4 > cliqz-mobile-tests/dev.id
       xcrun simctl boot $(cat cliqz-mobile-tests/dev.id)
       sleep 10
@@ -40,6 +41,9 @@ steps:
 
 - script: xcodebuild -workspace Client.xcworkspace -scheme "Fennec" -sdk iphonesimulator -destination "platform=iOS Simulator,OS=11.4,name=Test-iPhone6s" OTHER_SWIFT_FLAGS='$(value) -DAUTOMATION' ONLY_ACTIVE_ARCH=NO -derivedDataPath clean build test
   displayName: 'Xcode Build on Test iPhone 6s Simulator'
+
+- script: sudo xcode-select --switch /Applications/Xcode_9.4.1.app
+  displayName: 'set default xcode to 9.4.1'
 
 - bash: |
       cd cliqz-mobile-tests
