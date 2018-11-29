@@ -52,6 +52,7 @@ steps:
       xcrun simctl boot $(cat dev.id)
       sleep 10
       source scripts/azure-scripts/setup.sh ios
+      npm install -g appium@1.9.0 wd@1.6.2
       source scripts/azure-scripts/envs.sh ios
       source scripts/azure-scripts/appium.sh
       python testRunner.py || true
